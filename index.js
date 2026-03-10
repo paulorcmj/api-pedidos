@@ -7,11 +7,18 @@ const db = require("./database");
 // Importa as rotas dos pedidos
 const orderRoutes = require("./routes/orderRoutes");
 
+// Importa o Swagger
+const swaggerUi = require("swagger-ui-express");
+const swaggerSpec = require("./swagger");
+
 // Cria a aplicação Express
 const app = express();
 
 // Permite que a API receba e interprete JSON no body das requisições
 app.use(express.json());
+
+// Define a rota da documentação Swagger
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Define que todas as rotas de pedidos começam com /order
 app.use("/order", orderRoutes);
@@ -20,4 +27,5 @@ app.use("/order", orderRoutes);
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
+  console.log(`Documentação disponível em http://localhost:${PORT}/api-docs`);
 });
