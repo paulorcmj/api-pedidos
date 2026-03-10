@@ -27,6 +27,12 @@ npm start
 
 O servidor estará rodando em http://localhost:3000
 
+## Documentação da API
+
+Com o servidor rodando, acesse a documentação interativa em:
+
+http://localhost:3000/api-docs
+
 ## Rotas disponíveis
 
 - `POST /order` → Criar novo pedido
